@@ -27,6 +27,9 @@ spec:
           serviceName: {{ template "gitwebhookproxy.name" . }}
         {{- end }}
           servicePort: 80
+      {{- if .Values.gitWebhookProxy.ingress.path }}
+        path: {{ .Values.gitWebhookProxy.ingress.path }}
+      {{- end }}          
   tls:
   - hosts:
     - {{ .Values.gitWebhookProxy.ingress.host }}
